@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KARVAN — Logistika və Brokerlik | Gömrük, yük brokerliyi, Orta Dəhliz</title>
+<meta name="description" content="KARVAN: gömrük təmsilçiliyi, yük brokerliyi (FTL/LTL), Orta Dəhliz üzrə multimodal daşıma və ixrac subsidiyası müşavirliyi. Bakı.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#070A0F}
+a{color:#EEF2F7;text-decoration:none}a:hover{color:#F5A524}
+*{box-sizing:border-box}
+@keyframes kvfloat{0%,100%{transform:translateY(0) rotateX(8deg) rotateY(-10deg)}50%{transform:translateY(-14px) rotateX(4deg) rotateY(-4deg)}}
+@keyframes kvfloat2{0%,100%{transform:translateY(0) rotateX(6deg) rotateY(12deg)}50%{transform:translateY(12px) rotateX(10deg) rotateY(6deg)}}
+@keyframes kvspin{from{transform:rotateX(-20deg) rotateY(0deg)}to{transform:rotateX(-20deg) rotateY(360deg)}}
+@keyframes kvrun{0%{left:0%;opacity:0}6%{opacity:1}94%{opacity:1}100%{left:100%;opacity:0}}
+@keyframes kvpulse{0%{box-shadow:0 0 0 0 rgba(245,165,36,.55)}100%{box-shadow:0 0 0 14px rgba(245,165,36,0)}}
+.kv-float{animation:kvfloat 7s ease-in-out infinite;transform-style:preserve-3d}
+.kv-float2{animation:kvfloat2 8s ease-in-out infinite;transform-style:preserve-3d}
+.kv-card{transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .3s,background .3s;transform:perspective(900px) rotateX(0) rotateY(0)}
+.kv-card:hover{transform:perspective(900px) rotateX(6deg) rotateY(-6deg) translateY(-6px);border-color:rgba(245,165,36,.45);background:#111824}
+.kv-btn{transition:transform .2s,box-shadow .2s}
+.kv-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -10px rgba(245,165,36,.6)}
+.kv-scene{perspective:1300px}
+.kv-stack{position:relative;width:300px;height:120px;transform-style:preserve-3d;animation:kvspin 22s linear infinite}
+.kv-box{position:absolute;left:0;top:0;width:300px;height:120px;transform-style:preserve-3d}
+.kv-f{position:absolute;border:1px solid rgba(255,255,255,.14);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.3em;color:rgba(255,255,255,.75)}
+.kv-fr{width:300px;height:120px;transform:translateZ(60px)}
+.kv-bk{width:300px;height:120px;transform:rotateY(180deg) translateZ(60px)}
+.kv-rt{width:120px;height:120px;left:90px;transform:rotateY(90deg) translateZ(150px)}
+.kv-lt{width:120px;height:120px;left:90px;transform:rotateY(-90deg) translateZ(150px)}
+.kv-tp{width:300px;height:120px;transform:rotateX(90deg) translateZ(60px)}
+.kv-bt{width:300px;height:120px;transform:rotateX(-90deg) translateZ(60px)}
+.kv-amber .kv-f{background:repeating-linear-gradient(90deg,#C9851A 0 11px,#A96F15 11px 15px)}
+.kv-amber .kv-tp{background:#D8922A}
+.kv-steel .kv-f{background:repeating-linear-gradient(90deg,#2E5F86 0 11px,#244C6C 11px 15px)}
+.kv-steel .kv-tp{background:#3A6E97}
+.kv-graph .kv-f{background:repeating-linear-gradient(90deg,#2C333E 0 11px,#20262E 11px 15px)}
+.kv-graph .kv-tp{background:#363E4A}
+.kv-runner{position:absolute;top:-5px;width:12px;height:12px;border-radius:50%;margin-left:-6px;animation:kvrun 6s linear infinite}
+.kv-pulse{animation:kvpulse 1.8s ease-out infinite}
+.kv-in{width:100%;height:50px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:#0B1017;color:#EEF2F7;padding:0 16px;font:500 15px Inter,sans-serif}
+.kv-in:focus{outline:2px solid #F5A524;outline-offset:1px}
+@media (prefers-reduced-motion:reduce){.kv-float,.kv-float2,.kv-stack,.kv-runner,.kv-pulse{animation:none}}
+</style>
+
+<style>:root{--accent:#F5A524}html{scroll-behavior:smooth}[hidden]{display:none!important}#kv-done{display:flex}</style>
+</head>
+<body>
+
+<div style="width: 100%; min-height: 100vh; background: #070A0F; color: #EEF2F7; font-family: Inter, system-ui, sans-serif; overflow-x: hidden">
+
+<header style="position: sticky; top: 0; z-index: 20; background: rgba(7,10,15,.78); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(255,255,255,.07)">
+<nav aria-label="Əsas menyu" style="max-width: 1240px; margin: 0 auto; padding: 16px clamp(20px,4vw,40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+<a href="#top" style="display: flex; align-items: center; gap: 12px">
+<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 31 10v14L17 32 3 24V10Z" fill="none" stroke="#F5A524" stroke-width="2"></path><path d="M3 10l14 8 14-8M17 18v14" fill="none" stroke="#F5A524" stroke-width="2"></path></svg>
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: .18em">KARVAN</span>
+</a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 28px; font-size: 15px; color: #C3CCD8">
+<a href="#xidmetler">Xidmətlər</a>
+<a href="#dehliz">Orta Dəhliz</a>
+<a href="#proses">Proses</a>
+<a href="#subsidiya">Subsidiya</a>
+<a href="#teklif" class="kv-btn" style="background: var(--accent); color: #120C02; font-weight: 600; padding: 12px 20px; border-radius: 999px; min-height: 44px; display: inline-flex; align-items: center">Qiymət al</a>
+</div>
+</nav>
+</header>
+
+<section id="top" style="position: relative; max-width: 1240px; margin: 0 auto; padding: clamp(40px,6vw,80px) clamp(20px,4vw,40px) 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 40px">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 28px">
+<h1 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(42px,6vw,82px); line-height: .98; letter-spacing: -.035em">Asiyadan Avropaya.<br><span style="color: var(--accent)">Bir pəncərədən.</span></h1>
+<p style="margin: 0; max-width: 540px; font-size: clamp(17px,1.4vw,19px); line-height: 1.6; color: #A9B4C2">Gömrük təmsilçiliyi, yük brokerliyi və multimodal daşıma: Çin, Mərkəzi Asiya, Türkiyə və Avropa istiqamətlərində. Sənədləri biz hazırlayırıq, daşıyıcını biz tapırıq, siz yalnız izləyirsiniz.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href="#teklif" class="kv-btn" style="background: var(--accent); color: #120C02; font-weight: 600; font-size: 16px; padding: 16px 28px; border-radius: 14px; min-height: 52px; display: inline-flex; align-items: center; gap: 10px">Qiymət təklifi al
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+<a href="#xidmetler" style="border: 1px solid rgba(255,255,255,.18); font-weight: 500; font-size: 16px; padding: 16px 26px; border-radius: 14px; min-height: 52px; display: inline-flex; align-items: center">Xidmətlərə bax</a>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8D99A8; letter-spacing: .06em">
+<span>CAVAB: [CAVAB MÜDDƏTİ]</span>
+<span>REYESTR №: [NÖMRƏ]</span>
+<span>24/7 İZLƏMƏ</span>
+</div>
+</div>
+
+<div class="kv-scene" style="flex: 1 1 480px; min-width: 0; position: relative; display: flex; justify-content: center">
+<div style="position: relative; width: 100%; max-width: 620px; aspect-ratio: 1 / 1">
+<canvas id="kv-globe" role="img" aria-label="Orta Dəhliz marşrutları ilə fırlanan 3D yer kürəsi, mərkəzdə Bakı" style="position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab"></canvas>
+<div class="kv-float" style="position: absolute; left: 0; top: 14%; padding: 14px 16px; border-radius: 16px; background: rgba(14,19,27,.82); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 6px; min-width: 200px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8D99A8">KONTEYNER · 40HC</span>
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Şanxay → Bakı</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #7CC4FF"><span style="width: 7px; height: 7px; border-radius: 50%; background: #7CC4FF"></span>Xəzər bərəsində</span>
+</div>
+<div class="kv-float2" style="position: absolute; right: 0; bottom: 16%; padding: 14px 16px; border-radius: 16px; background: rgba(14,19,27,.82); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(10px); display: flex; flex-direction: column; gap: 6px; min-width: 210px">
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; color: #8D99A8">GÖMRÜK BƏYANNAMƏSİ</span>
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">HS 8471 · Rəsmiləşdi</span>
+<span style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--accent)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Buraxılış verildi</span>
+</div>
+</div>
+</div>
+</section>
+
+<section aria-label="Bazar göstəriciləri" style="max-width: 1240px; margin: 0 auto; padding: 24px clamp(20px,4vw,40px) 72px">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: 20px; overflow: hidden">
+<div style="background: #0A0E14; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em">16+ mln t</span>
+<span style="color: #A9B4C2; font-size: 15px">2026-da Azərbaycandan keçəcək tranzit yükü</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">Mənbə: Rəqəmsal İnkişaf və Nəqliyyat Nazirliyi</span>
+</div>
+<div style="background: #0A0E14; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em">53 574 TEU</span>
+<span style="color: #A9B4C2; font-size: 15px">Orta Dəhliz, yanvar–avqust 2026 (+11%)</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">Mənbə: ADY Express</span>
+</div>
+<div style="background: #0A0E14; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em; color: var(--accent)">70%</span>
+<span style="color: #A9B4C2; font-size: 15px">İxrac daşıma xərcinin dövlət kompensasiyası</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">Mənbə: 9 iyun 2026 Fərmanı</span>
+</div>
+<div style="background: #0A0E14; padding: 28px; display: flex; flex-direction: column; gap: 8px">
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: -.02em">[N]+</span>
+<span style="color: #A9B4C2; font-size: 15px">Rəsmiləşdirdiyimiz yük</span>
+<span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">Şirkət göstəricisi</span>
+</div>
+</div>
+</section>
+
+<section id="xidmetler" style="max-width: 1240px; margin: 0 auto; padding: 72px clamp(20px,4vw,40px)">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 44px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 640px">
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(32px,4vw,52px); line-height: 1.04; letter-spacing: -.03em">Yükün yolu boyunca hər addım bir müqavilədə.</h2>
+</div>
+<p style="margin: 0; max-width: 380px; color: #A9B4C2; font-size: 16px; line-height: 1.6">Gömrük, daşıyıcı və sənəd üçün üç ayrı şirkətlə danışmağa ehtiyac yoxdur.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px">
+<article class="kv-card" style="background: #0C1118; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; min-height: 300px">
+<div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(245,165,36,.12); color: var(--accent); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"></path><path d="M14 3v5h5M10 13h6M10 17h6"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 23px">Gömrük təmsilçiliyi</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Bəyannamə, HS kod təsnifatı, rüsum və ƏDV hesabı, uyğunluq sertifikatları və gömrük orqanları ilə bütün yazışmalar.</p>
+<span style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7E8A99">İDXAL · İXRAC · TRANZİT</span>
+</article>
+<article class="kv-card" style="background: #0C1118; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; min-height: 300px">
+<div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(124,196,255,.12); color: #7CC4FF; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 7h12v9H2zM14 10h4l4 4v2h-8z"></path><circle cx="6" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></div>
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 23px">Yük brokerliyi</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Tam maşın (FTL) və qismən yük (LTL): yoxlanılmış daşıyıcı, şəffaf tarif və marşrut boyunca real vaxtda izləmə.</p>
+<span style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7E8A99">FTL · LTL · REFRİJERATOR</span>
+</article>
+<article class="kv-card" style="background: #0C1118; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; min-height: 300px">
+<div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(245,165,36,.12); color: var(--accent); display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 23px">Multimodal daşıma</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Dəmir yolu, Xəzər bərəsi və avtomobil bir zəncirdə: Çin–Qazaxıstan–Bakı–Tbilisi–Qars xətti ilə Türkiyə və Avropaya.</p>
+<span style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7E8A99">DƏMİR YOLU · DƏNİZ · HAVA</span>
+</article>
+<article class="kv-card" style="background: #0C1118; border: 1px solid rgba(255,255,255,.08); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 18px; min-height: 300px">
+<div style="width: 54px; height: 54px; border-radius: 14px; background: rgba(124,196,255,.12); color: #7CC4FF; display: flex; align-items: center; justify-content: center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v20M17 6H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 23px">İxrac subsidiyası</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Qeyri-neft ixracatçıları üçün daşıma və gömrük xərclərinin kompensasiyasına sənəd paketi və rüblük müraciət.</p>
+<span style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #7E8A99">MÜŞAVİRLİK · SƏNƏDLƏŞMƏ</span>
+</article>
+</div>
+</section>
+
+<section id="dehliz" style="background: #0A0E14; border-top: 1px solid rgba(255,255,255,.07); border-bottom: 1px solid rgba(255,255,255,.07)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 96px clamp(20px,4vw,40px); display: flex; flex-direction: column; gap: 64px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(32px,4vw,52px); line-height: 1.04; letter-spacing: -.03em">Dünyanın yeni ticarət yolu Bakıdan keçir.</h2>
+<p style="margin: 0; color: #A9B4C2; font-size: 17px; line-height: 1.65; max-width: 520px">Çin ilə Avropa arasındakı ən qısa quru–dəniz marşrutunda biz Bakı nöqtəsindəyik: yükü Aktau və Kuryk limanlarından qəbul edir, gömrükdən keçirir və Gürcüstan–Türkiyə istiqamətinə ötürürük.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #C3CCD8">Bakı–Tbilisi–Qars</span>
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #C3CCD8">Ələt limanı</span>
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #C3CCD8">Xəzər bərələri</span>
+<span style="padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,.12); font-size: 14px; color: #C3CCD8">Şimal–Cənub</span>
+</div>
+</div>
+<div class="kv-scene" aria-hidden="true" style="flex: 1 1 420px; min-width: 0; height: 460px; display: flex; align-items: center; justify-content: center; position: relative">
+<div style="position: absolute; bottom: 50px; width: 380px; height: 80px; border-radius: 50%; background: radial-gradient(closest-side, rgba(245,165,36,.22), transparent)"></div>
+<div class="kv-stack" style="margin-top: 140px">
+<div class="kv-box kv-graph" style="transform: translateY(0)">
+<div class="kv-f kv-fr">KARVAN</div><div class="kv-f kv-bk">KARVAN</div><div class="kv-f kv-rt"></div><div class="kv-f kv-lt"></div><div class="kv-f kv-tp"></div><div class="kv-f kv-bt"></div>
+</div>
+<div class="kv-box kv-steel" style="transform: translateY(-122px) translateX(18px)">
+<div class="kv-f kv-fr">40HC</div><div class="kv-f kv-bk">40HC</div><div class="kv-f kv-rt"></div><div class="kv-f kv-lt"></div><div class="kv-f kv-tp"></div><div class="kv-f kv-bt"></div>
+</div>
+<div class="kv-box kv-amber" style="transform: translateY(-244px) translateX(-10px)">
+<div class="kv-f kv-fr">KARVAN</div><div class="kv-f kv-bk">KARVAN</div><div class="kv-f kv-rt"></div><div class="kv-f kv-lt"></div><div class="kv-f kv-tp"></div><div class="kv-f kv-bt"></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="position: relative; height: 2px; background: repeating-linear-gradient(90deg, rgba(255,255,255,.25) 0 8px, transparent 8px 16px); margin: 0 6%">
+<span class="kv-runner" style="background: var(--accent); box-shadow: 0 0 18px var(--accent)"></span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; text-align: center">
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Şanxay</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">ÇİN</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Almatı</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">QAZAXISTAN</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Aktau</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">XƏZƏR</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: 17px; color: var(--accent)">Bakı</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">KARVAN HUB</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Tbilisi</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">GÜRCÜSTAN</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Qars</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">TÜRKİYƏ</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 17px">Avropa</span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #7E8A99">AB</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section id="proses" style="max-width: 1240px; margin: 0 auto; padding: 96px clamp(20px,4vw,40px)">
+<div style="display: flex; flex-direction: column; gap: 14px; margin-bottom: 44px; max-width: 640px">
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(32px,4vw,52px); line-height: 1.04; letter-spacing: -.03em">Sorğudan çatdırılmaya dörd addım.</h2>
+</div>
+<ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px">
+<li style="border-top: 2px solid var(--accent); padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px">Sorğu</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Yükün növü, marşrut və tarixi yazın, formu doldurun və ya zəng edin.</p>
+</li>
+<li style="border-top: 2px solid rgba(255,255,255,.16); padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px">Sabit təklif</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Daşıma, gömrük və rüsum ayrıca göstərilmiş, gizli xərci olmayan qiymət.</p>
+</li>
+<li style="border-top: 2px solid rgba(255,255,255,.16); padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px">Sənəd və gömrük</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Bəyannamə və sertifikatları biz hazırlayır, rəsmiləşdirməni biz aparırıq.</p>
+</li>
+<li style="border-top: 2px solid rgba(255,255,255,.16); padding-top: 24px; display: flex; flex-direction: column; gap: 12px">
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 22px">Çatdırılma</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 15px; line-height: 1.6">Hər mərhələdə bildiriş, sonda bütün sənədlərlə yekun hesabat.</p>
+</li>
+</ol>
+</section>
+
+<section id="subsidiya" style="max-width: 1240px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px) 96px">
+<div style="position: relative; overflow: hidden; border-radius: 28px; background: var(--accent); color: #120C02; padding: clamp(32px,5vw,64px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 14px; max-width: 680px">
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(30px,3.6vw,48px); line-height: 1.05; letter-spacing: -.03em">Daşıma xərcinizin 70%-ə qədəri geri qayıda bilər.</h2>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A2806">Azərbaycanda qeydiyyatlı nəqliyyatla daşımada 70%, xarici qeydiyyatlı avtomobillə 50%. 1 sentyabr 2026-dan qüvvədədir. Müraciət paketini biz hazırlayırıq.</p>
+</div>
+<a href="#teklif" class="kv-btn" style="background: #070A0F; color: #EEF2F7; font-weight: 600; font-size: 16px; padding: 18px 28px; border-radius: 14px; min-height: 54px; display: inline-flex; align-items: center">Uyğunluğu yoxla</a>
+</div>
+</section>
+
+<section id="teklif" style="background: #0A0E14; border-top: 1px solid rgba(255,255,255,.07)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 96px clamp(20px,4vw,40px); display: flex; flex-wrap: wrap; gap: 56px">
+<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+<h2 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 800; font-size: clamp(32px,4vw,52px); line-height: 1.04; letter-spacing: -.03em">Yükünüzü yazın, qiyməti biz hesablayaq.</h2>
+<p style="margin: 0; color: #A9B4C2; font-size: 17px; line-height: 1.6">[CAVAB MÜDDƏTİ] ərzində menecerimiz sizinlə əlaqə saxlayacaq.</p>
+<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px; font-size: 16px">
+<a href="tel:[TELEFON]" style="display: flex; align-items: center; gap: 12px; min-height: 44px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A524" stroke-width="1.8" aria-hidden="true"><path d="M5 3h4l2 5-3 2a12 12 0 0 0 6 6l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2"></path></svg>[TELEFON]</a>
+<a href="mailto:[EMAIL]" style="display: flex; align-items: center; gap: 12px; min-height: 44px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#F5A524" stroke-width="1.8" aria-hidden="true"><path d="M3 5h18v14H3zM3 6l9 7 9-7"></path></svg>[EMAIL]</a>
+</div>
+</div>
+<div style="flex: 1 1 520px; min-width: 0; background: #0E131B; border: 1px solid rgba(255,255,255,.09); border-radius: 24px; padding: clamp(24px,3vw,36px)">
+<div id="kv-formwrap">
+<form id="kv-form" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px">
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-ad" style="font-size: 14px; color: #C3CCD8">Ad, şirkət</label><input id="kv-ad" class="kv-in" type="text" placeholder="Məs.: Orxan, ABC MMC"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-tel" style="font-size: 14px; color: #C3CCD8">Telefon</label><input id="kv-tel" class="kv-in" type="tel" placeholder="+994"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-from" style="font-size: 14px; color: #C3CCD8">Haradan</label><input id="kv-from" class="kv-in" type="text" placeholder="Şəhər, ölkə"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-to" style="font-size: 14px; color: #C3CCD8">Haraya</label><input id="kv-to" class="kv-in" type="text" placeholder="Şəhər, ölkə"></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-type" style="font-size: 14px; color: #C3CCD8">Xidmət</label>
+<select id="kv-type" class="kv-in"><option>Konteyner</option><option>Tam maşın (FTL)</option><option>Qismən yük (LTL)</option><option>Hava yükü</option><option>Yalnız gömrük</option><option>İxrac subsidiyası</option></select></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><label for="kv-w" style="font-size: 14px; color: #C3CCD8">Çəki / həcm</label><input id="kv-w" class="kv-in" type="text" placeholder="Məs.: 12 t, 40 m³"></div>
+<button type="submit" class="kv-btn" style="grid-column: 1 / -1; height: 56px; border: 0; border-radius: 14px; background: var(--accent); color: #120C02; font: 600 16px Inter, sans-serif; cursor: pointer">Təklif göndərin</button>
+</form>
+</div>
+<div id="kv-done" hidden>
+<div style="min-height: 280px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 16px">
+<div style="width: 56px; height: 56px; border-radius: 50%; background: rgba(245,165,36,.15); color: var(--accent); display: flex; align-items: center; justify-content: center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></div>
+<h3 style="margin: 0; font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 26px">Sorğunuz qəbul edildi</h3>
+<p style="margin: 0; color: #A9B4C2; font-size: 16px; line-height: 1.6">[CAVAB MÜDDƏTİ] ərzində sizə zəng edəcəyik.</p>
+<button type="button" id="kv-reset" style="background: transparent; border: 1px solid rgba(255,255,255,.18); color: #EEF2F7; padding: 12px 20px; border-radius: 12px; min-height: 44px; font: 500 15px Inter, sans-serif; cursor: pointer">Yeni sorğu</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer style="border-top: 1px solid rgba(255,255,255,.07)">
+<div style="max-width: 1240px; margin: 0 auto; padding: 40px clamp(20px,4vw,40px); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; color: #8D99A8; font-size: 14px">
+<span style="font-family: 'Inter Tight', sans-serif; font-weight: 800; letter-spacing: .18em; color: #EEF2F7">KARVAN</span>
+<span>[ÜNVAN], Bakı</span>
+<span>© 2026 KARVAN Logistika və Brokerlik</span>
+</div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var S={cv:document.getElementById('kv-globe'),raf:0,mx:0,my:0,tmx:0,tmy:0};
+  S.cv.addEventListener('pointermove',function(e){var r=S.cv.getBoundingClientRect();S.tmx=(e.clientX-r.left)/r.width-0.5;S.tmy=(e.clientY-r.top)/r.height-0.5;});
+  S.cv.addEventListener('pointerleave',function(){S.tmx=0;S.tmy=0;});
+  (function(){
+    const N = 1300, pts = [];
+    const ga = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < N; i++) {
+      const y = 1 - (i / (N - 1)) * 2, rr = Math.sqrt(1 - y * y), th = ga * i;
+      pts.push([Math.cos(th) * rr, y, Math.sin(th) * rr]);
+    }
+    const D = Math.PI / 180;
+    const ll = (lat, lon) => [Math.cos(lat * D) * Math.cos(lon * D), Math.sin(lat * D), Math.cos(lat * D) * Math.sin(lon * D)];
+    const C = {
+      'Şanxay': ll(31.2, 121.5), 'Almatı': ll(43.2, 76.9), 'Aktau': ll(43.6, 51.2), 'Bakı': ll(40.4, 49.9),
+      'Tbilisi': ll(41.7, 44.8), 'İstanbul': ll(41.0, 29.0), 'Rotterdam': ll(51.9, 4.5), 'Dubay': ll(25.2, 55.3), 'Urumçi': ll(43.8, 87.6)
+    };
+    const routes = [['Şanxay', 'Urumçi'], ['Urumçi', 'Almatı'], ['Almatı', 'Aktau'], ['Aktau', 'Bakı'], ['Bakı', 'Tbilisi'], ['Tbilisi', 'İstanbul'], ['İstanbul', 'Rotterdam'], ['Dubay', 'Bakı']];
+    const slerp = (a, b, t) => {
+      const d = Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]));
+      const w = Math.acos(d), s = Math.sin(w) || 1;
+      const k1 = Math.sin((1 - t) * w) / s, k2 = Math.sin(t * w) / s;
+      return [a[0] * k1 + b[0] * k2, a[1] * k1 + b[1] * k2, a[2] * k1 + b[2] * k2, w];
+    };
+    const arcs = routes.map(([a, b]) => {
+      const out = [], A = C[a], B = C[b];
+      const w = slerp(A, B, 0.5)[3];
+      for (let i = 0; i <= 40; i++) {
+        const t = i / 40, p = slerp(A, B, t), h = 1 + Math.sin(Math.PI * t) * Math.min(0.22, w * 0.35);
+        out.push([p[0] * h, p[1] * h, p[2] * h]);
+      }
+      return out;
+    });
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const t0 = performance.now();
+    const draw = (now) => {
+      S.raf = requestAnimationFrame(draw);
+      const c = S.cv; if (!c) return;
+      const r = c.getBoundingClientRect(); const W = r.width, H = r.height; if (!W || !H) return;
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      if (c.width !== Math.round(W * dpr)) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); }
+      const g = c.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+      const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#F5A524';
+      const speed = reduce ? 0 : 1;
+      const t = (now - t0) * speed;
+      S.mx += (S.tmx - S.mx) * 0.06; S.my += (S.tmy - S.my) * 0.06;
+      const yaw = (62 * D - Math.PI / 2) + Math.sin(t * 0.00018) * 0.55 + S.mx * 0.7;
+      const tilt = 0.42 + S.my * 0.35;
+      const cy1 = Math.cos(yaw), sy1 = Math.sin(yaw), cx1 = Math.cos(tilt), sx1 = Math.sin(tilt);
+      const R = Math.min(W, H) * 0.36, ox = W / 2, oy = H / 2;
+      const P = (v) => {
+        const x = v[0] * cy1 + v[2] * sy1, z = -v[0] * sy1 + v[2] * cy1;
+        const y = v[1] * cx1 - z * sx1, z2 = v[1] * sx1 + z * cx1;
+        return [ox + x * R, oy - y * R, z2];
+      };
+      const glow = g.createRadialGradient(ox, oy, R * 0.7, ox, oy, R * 1.45);
+      glow.addColorStop(0, 'rgba(124,196,255,0.10)'); glow.addColorStop(1, 'rgba(124,196,255,0)');
+      g.fillStyle = glow; g.beginPath(); g.arc(ox, oy, R * 1.45, 0, Math.PI * 2); g.fill();
+      g.strokeStyle = 'rgba(124,196,255,0.22)'; g.lineWidth = 1; g.beginPath(); g.arc(ox, oy, R, 0, Math.PI * 2); g.stroke();
+      for (let i = 0; i < pts.length; i++) {
+        const q = P(pts[i]);
+        const a = q[2] > 0 ? 0.18 + q[2] * 0.62 : 0.05;
+        g.fillStyle = 'rgba(170,205,240,' + a.toFixed(3) + ')';
+        const s = q[2] > 0 ? 1 + q[2] * 0.9 : 0.8;
+        g.fillRect(q[0] - s / 2, q[1] - s / 2, s, s);
+      }
+      g.lineWidth = 1.6; g.lineCap = 'round';
+      arcs.forEach((arc, k) => {
+        const pr = arc.map(P);
+        for (let i = 1; i < pr.length; i++) {
+          const z = (pr[i][2] + pr[i - 1][2]) / 2; if (z < -0.15) continue;
+          g.strokeStyle = accent; g.globalAlpha = 0.25 + Math.max(0, z) * 0.55;
+          g.beginPath(); g.moveTo(pr[i - 1][0], pr[i - 1][1]); g.lineTo(pr[i][0], pr[i][1]); g.stroke();
+        }
+        const f = ((t / 2400) + k * 0.13) % 1, idx = Math.floor(f * (pr.length - 1)), q = pr[idx];
+        if (q[2] > -0.1) {
+          g.globalAlpha = 1; g.fillStyle = '#FFFFFF'; g.shadowColor = accent; g.shadowBlur = 14;
+          g.beginPath(); g.arc(q[0], q[1], 2.6, 0, Math.PI * 2); g.fill(); g.shadowBlur = 0;
+        }
+      });
+      g.globalAlpha = 1;
+      g.font = '500 11px "JetBrains Mono", monospace';
+      Object.keys(C).forEach((name) => {
+        const q = P(C[name]); if (q[2] < 0.05) return;
+        const hub = name === 'Bakı';
+        if (hub) {
+          const pulse = (t / 1600) % 1;
+          g.strokeStyle = accent; g.globalAlpha = 1 - pulse; g.lineWidth = 1.5;
+          g.beginPath(); g.arc(q[0], q[1], 5 + pulse * 22, 0, Math.PI * 2); g.stroke(); g.globalAlpha = 1;
+        }
+        g.fillStyle = hub ? accent : '#EEF2F7';
+        g.beginPath(); g.arc(q[0], q[1], hub ? 5 : 3, 0, Math.PI * 2); g.fill();
+        g.fillStyle = hub ? accent : 'rgba(238,242,247,0.75)';
+        g.fillText(name.toLocaleUpperCase('az'), q[0] + 9, q[1] - 7);
+      });
+    };
+    S.raf = requestAnimationFrame(draw);
+  })();
+  var f=document.getElementById('kv-form'),w=document.getElementById('kv-formwrap'),d=document.getElementById('kv-done');
+  f.addEventListener('submit',function(e){e.preventDefault();w.hidden=true;d.hidden=false;});
+  document.getElementById('kv-reset').addEventListener('click',function(){f.reset();d.hidden=true;w.hidden=false;});
+})();
+</script>
+</body>
+</html>
